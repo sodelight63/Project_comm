@@ -16,12 +16,6 @@ session_start();
     <div class="container">
         <div class="row">
             <div class="col-md-8 mt-4">
-                <?php if (isset($_SESSION['message'])) : ?>
-                    <h5 class="alert alert-success"><?= $_SESSION['message']; ?></h5>
-                <?php
-                    unset($_SESSION['message']);
-                endif;
-                ?>
                 <div class="card">
                     <div class="card-header">
                         <h3>เพิ่มข้อมูลลูกค้า</h3>

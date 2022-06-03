@@ -16,6 +16,12 @@ session_start();
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt-4">
+                <?php if (isset($_SESSION['message'])) : ?>
+                    <h5 class="alert alert-success"><?= $_SESSION['message']; ?></h5>
+                <?php
+                    unset($_SESSION['message']);
+                endif;
+                ?>
                 <div class="card">
                     <div class="card-header">
                         <h3>ข้อมูลลูกค้า
@@ -33,6 +39,7 @@ session_start();
                                     <th>อีเมล</th>
                                     <th>ที่อยู่</th>
                                     <th>แก้ไข</th>
+                                    <th>ลบ</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,7 +56,12 @@ session_start();
                                         <td><?= $row['phone_ct']; ?></td>
                                         <td><?= $row['email_ct']; ?></td>
                                         <td><?= $row['adress_ct']; ?></td>
-                                        <td><a href="Edit_Cus.php?customer_id=<?= $row['customer_id'] ?>" class="btn btn-primary">Edit</a></td>
+                                        <td><a href="Edit_Cus.php?customer_id=<?= $row['customer_id'] ?>" class="btn btn-primary">แก้ไข</a></td>
+                                        <td>
+                                            <form action="crud.php" method="POST">
+                                                <button type="submit" name="delete_cus" value="<?= $row['customer_id'] ?>" class="btn btn-danger">ลบ</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
