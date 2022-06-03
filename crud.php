@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conn.php');
+include('config/conn.php');
 
 if (isset($_POST['save_cus'])) {
     $name_ct = $_POST['name_ct'];
@@ -90,4 +90,3 @@ if (isset($_POST['delete_cus'])) {
         echo $e->getMessage();
     }
 }
-?>
