@@ -17,29 +17,31 @@ session_start();
         <div class="row">
             <div class="col-md-8 mt-4">
                 <div class="card">
-                    <div class="card-header">
-                        <h3>เพิ่มข้อมูลลูกค้า</h3>
+                    <div class="card-body">
+                        <h3>เพิ่มข้อมูลลูกค้า
+                        <a href="index.php" class="btn btn-danger float-end">ย้อนกลับ</a>
+                        </h3>
                     </div>
                     <div class="card-body">
                         <form action="crud.php" method="POST">
-                            <div class="mb-3">
-                                <label>Name</label>
+                            <div class="col mb-3">
+                                <label>ชื่อ:</label>
                                 <input type="text" name="name_ct" class="form-control" />
                             </div>
-                            <div class="mb-3">
-                                <label>Surname</label>
+                            <div class="col mb-3">
+                                <label>นามสกุล:</label>
                                 <input type="text" name="surname_ct" class="form-control" />
                             </div>
                             <div class="mb-3">
-                                <label>Phone</label>
+                                <label>เบอร์โทร:</label>
                                 <input type="text" name="phone_ct" class="form-control" />
                             </div>
                             <div class="mb-3">
-                                <label>Email</label>
+                                <label>อีเมล:</label>
                                 <input type="text" name="email_ct" class="form-control" />
                             </div>
                             <div class="mb-3">
-                                <label>Address</label>
+                                <label>ที่อยู่:</label>
                                 <input type="text" name="adress_ct" class="form-control" />
                             </div>
                             <div class="mb-3">

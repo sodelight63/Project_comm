@@ -9,7 +9,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>index</title>
+    <title>หน้าแรก</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@ session_start();
                 endif;
                 ?>
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-body">
                         <h3>ข้อมูลลูกค้า
                             <a href="Add_Cus.php" class="btn btn-primary float-end">เพิ่มข้อมูล</a>
                         </h3>

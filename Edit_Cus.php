@@ -18,7 +18,7 @@ include('config/conn.php');
         <div class="row">
             <div class="col-md-8 mt-4">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-body">
                         <h3>แก้ไขข้อมูลลูกค้า
                             <a href="index.php" class="btn btn-danger float-end">ย้อนกลับ</a>
                         </h3>
@@ -38,23 +38,23 @@ include('config/conn.php');
                         <form action="crud.php" method="POST">
                             <input type="hidden" name="customer_id" value="<?= $result['customer_id'] ?>">
                             <div class="mb-3">
-                                <label>Name</label>
+                                <label>ชื่อ:</label>
                                 <input type="text" name="name_ct" class="form-control" value="<?= $result['name_ct'] ?>" />
                             </div>
                             <div class="mb-3">
-                                <label>Surname</label>
+                                <label>นามสกุล:</label>
                                 <input type="text" name="surname_ct" class="form-control" value="<?= $result['surname_ct'] ?>" />
                             </div>
                             <div class="mb-3">
-                                <label>Phone</label>
+                                <label>เบอร์โทร:</label>
                                 <input type="text" name="phone_ct" class="form-control" value="<?= $result['phone_ct'] ?>" />
                             </div>
                             <div class="mb-3">
-                                <label>Email</label>
+                                <label>อีเมล:</label>
                                 <input type="text" name="email_ct" class="form-control" value="<?= $result['email_ct'] ?>" />
                             </div>
                             <div class="mb-3">
-                                <label>Address</label>
+                                <label>ที่อยู่:</label>
                                 <input type="text" name="adress_ct" class="form-control" value="<?= $result['adress_ct'] ?>" />
                             </div>
                             <div class="mb-3">
