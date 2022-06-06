@@ -90,3 +90,88 @@ if (isset($_POST['delete_cus'])) {
         echo $e->getMessage();
     }
 }
+
+if (isset($_POST['save_odr'])) {
+    $order_name = $_POST['order_name'];
+    $order_quanlity = $_POST['order_quanlity'];
+    $order_cost = $_POST['order_cost'];
+    $order_date = $_POST['order_date'];
+
+    $query = "INSERT INTO orders(order_name,order_quanlity,order_cost,order_date) VALUES(:order_name,:order_quanlity,:order_cost,:order_date)";
+    $query_run = $conn->prepare($query);
+
+    $data = [
+        ':order_name' => $order_name,
+        ':order_quanlity' => $order_quanlity,
+        ':order_cost' => $order_cost,
+        ':order_date' => $order_date
+    ];
+    $query_execute = $query_run->execute($data);
+
+    if ($query_execute) {
+        $_SESSION['message'] = "เพิ่มข้อมูลสำเร็จ";
+        header('Location: index_orders.php');
+        exit(0);
+    } else {
+        $_SESSION['message'] = "เพิ่มข้อมูลไม่สำเร็จ";
+        header('Location: index_orders.php');
+        exit(0);
+    }
+}
+
+if (isset($_POST['edit_odr'])) {
+    $order_id = $_POST['order_id'];
+    $order_name = $_POST['order_name'];
+    $order_quanlity = $_POST['order_quanlity'];
+    $order_cost = $_POST['order_cost'];
+    $order_date = $_POST['order_date'];
+
+    try {
+        $query = "UPDATE orders SET order_name = :order_name, order_quanlity = :order_quanlity, order_cost = :order_cost, order_date = :order_date WHERE order_id = :order_id";
+        $stmt = $conn->prepare($query);
+
+        $data = [
+            ':order_name' => $order_name,
+            ':order_quanlity' => $order_quanlity,
+            ':order_cost' => $order_cost,
+            ':order_date' => $order_date,
+            ':order_id' => $order_id
+        ];
+        $query_execute = $stmt->execute($data);
+        if ($query_execute) {
+            $_SESSION['message'] = "แก้ไขข้อมูลสำเร็จ";
+            header('Location: index_orders.php');
+            exit(0);
+        } else {
+            $_SESSION['message'] = "แก้ไขข้อมูลไม่สำเร็จ";
+            header('Location: index_orders.php');
+            exit(0);
+        }
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+}
+
+if (isset($_POST['delete_odr'])) {
+    $order_id = $_POST['delete_odr'];
+    try {
+        $query = "DELETE FROM orders WHERE order_id = :order_id";
+        $stmt = $conn->prepare($query);
+
+        $data = [
+            ':order_id' => $order_id
+        ];
+        $query_execute = $stmt->execute($data);
+        if ($query_execute) {
+            $_SESSION['message'] = "ลบข้อมูลสำเร็จ";
+            header('Location: index_orders.php');
+            exit(0);
+        } else {
+            $_SESSION['message'] = "ลบข้อมูลไม่สำเร็จ";
+            header('Location: index_orders.php');
+            exit(0);
+        }
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+}

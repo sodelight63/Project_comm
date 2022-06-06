@@ -9,7 +9,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>หน้าแรก</title>
+    <title>หน้าแรกการสั่งซื้อ</title>
 </head>
 
 <body>
@@ -24,8 +24,9 @@ session_start();
                 ?>
                 <div class="card">
                     <div class="card-body">
-                        <h3>ข้อมูลลูกค้า
-                            <a href="Add_Cus.php" class="btn btn-primary float-end">เพิ่มข้อมูล</a>
+                        <h3>
+                            ข้อมูลการสั่งซื้ออะไหล่
+                            <a href="Add_Ods.php" class="btn btn-primary float-end">เพิ่มข้อมูล</a>
                         </h3>
                     </div>
                     <div class="card-body">
@@ -33,11 +34,10 @@ session_start();
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>ชื่อ</th>
-                                    <th>นามสกุล</th>
-                                    <th>เบอร์โทร</th>
-                                    <th>อีเมล</th>
-                                    <th>ที่อยู่</th>
+                                    <th>ชื่ออะไหล่</th>
+                                    <th>จำนวน</th>
+                                    <th>ราคาต้นทุน</th>
+                                    <th>วันที่สั่งซื้อ</th>
                                     <th>แก้ไข</th>
                                     <th>ลบ</th>
                                 </tr>
@@ -45,21 +45,20 @@ session_start();
                             <tbody>
                                 <?php
                                 require 'config/conn.php';
-                                $sql = "SELECT * FROM customer";
+                                $sql = "SELECT * FROM orders";
                                 $stmt = $conn->query($sql);
                                 while ($row = $stmt->fetch()) {
                                 ?>
                                     <tr>
-                                        <td><?= $row['customer_id']; ?></td>
-                                        <td><?= $row['name_ct']; ?></td>
-                                        <td><?= $row['surname_ct']; ?></td>
-                                        <td><?= $row['phone_ct']; ?></td>
-                                        <td><?= $row['email_ct']; ?></td>
-                                        <td><?= $row['adress_ct']; ?></td>
-                                        <td><a href="Edit_Cus.php?customer_id=<?= $row['customer_id'] ?>" class="btn btn-primary">แก้ไข</a></td>
+                                        <td><?= $row['order_id']; ?></td>
+                                        <td><?= $row['order_name'];?></td>
+                                        <td><?= $row['order_quanlity'];?></td>
+                                        <td><?= $row['order_cost'];?></td>
+                                        <td><?= $row['order_date'];?></td>
+                                        <td><a href="Edit_Ods.php?order_id=<?= $row['order_id']?>" class="btn btn-primary">แก้ไข</a></td>
                                         <td>
                                             <form action="crud.php" method="POST">
-                                                <button type="submit" name="delete_cus" value="<?= $row['customer_id'] ?>" class="btn btn-danger">ลบ</button>
+                                            <button type="submit" name="delete_odr" value="<?= $row['order_id'] ?>" class="btn btn-danger">ลบ</button>
                                             </form>
                                         </td>
                                     </tr>
