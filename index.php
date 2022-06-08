@@ -10,6 +10,16 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>หน้าแรก</title>
+    <?php require_once 'dashboard/navbar.php'; ?>
+    <!-- data table -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
 </head>
 
 <body>
@@ -23,13 +33,13 @@ session_start();
                 endif;
                 ?>
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-header">
                         <h3>ข้อมูลลูกค้า
                             <a href="Add_Cus.php" class="btn btn-primary float-end">เพิ่มข้อมูล</a>
                         </h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-striped">
+                        <table id="example" class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -44,13 +54,14 @@ session_start();
                             </thead>
                             <tbody>
                                 <?php
+                                $i = 1;
                                 require 'config/conn.php';
                                 $sql = "SELECT * FROM customer";
                                 $stmt = $conn->query($sql);
                                 while ($row = $stmt->fetch()) {
                                 ?>
                                     <tr>
-                                        <td><?= $row['customer_id']; ?></td>
+                                        <td><?= $i++; ?></td>
                                         <td><?= $row['name_ct']; ?></td>
                                         <td><?= $row['surname_ct']; ?></td>
                                         <td><?= $row['phone_ct']; ?></td>
@@ -71,7 +82,7 @@ session_start();
             </div>
         </div>
     </div>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

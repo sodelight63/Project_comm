@@ -10,6 +10,16 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>หน้าแรกการสั่งซื้อ</title>
+    <?php require_once 'dashboard/navbar.php'; ?>
+    <!-- data table -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
 </head>
 
 <body>
@@ -23,14 +33,14 @@ session_start();
                 endif;
                 ?>
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-header">
                         <h3>
                             ข้อมูลการสั่งซื้ออะไหล่
                             <a href="Add_Ods.php" class="btn btn-primary float-end">เพิ่มข้อมูล</a>
                         </h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-striped">
+                        <table id="example" class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -44,21 +54,22 @@ session_start();
                             </thead>
                             <tbody>
                                 <?php
+                                $i = 1;
                                 require 'config/conn.php';
                                 $sql = "SELECT * FROM orders";
                                 $stmt = $conn->query($sql);
                                 while ($row = $stmt->fetch()) {
                                 ?>
                                     <tr>
-                                        <td><?= $row['order_id']; ?></td>
-                                        <td><?= $row['order_name'];?></td>
-                                        <td><?= $row['order_quanlity'];?></td>
-                                        <td><?= $row['order_cost'];?></td>
-                                        <td><?= $row['order_date'];?></td>
-                                        <td><a href="Edit_Ods.php?order_id=<?= $row['order_id']?>" class="btn btn-primary">แก้ไข</a></td>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $row['order_name']; ?></td>
+                                        <td><?= $row['order_quanlity']; ?></td>
+                                        <td><?= $row['order_cost']; ?></td>
+                                        <td><?= $row['order_date']; ?></td>
+                                        <td><a href="Edit_Ods.php?order_id=<?= $row['order_id'] ?>" class="btn btn-primary">แก้ไข</a></td>
                                         <td>
                                             <form action="crud.php" method="POST">
-                                            <button type="submit" name="delete_odr" value="<?= $row['order_id'] ?>" class="btn btn-danger">ลบ</button>
+                                                <button type="submit" name="delete_odr" value="<?= $row['order_id'] ?>" class="btn btn-danger">ลบ</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -70,7 +81,7 @@ session_start();
             </div>
         </div>
     </div>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
