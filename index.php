@@ -45,6 +45,7 @@ session_start();
             });
         });
     </script>
+    <!-- data table -->
 </head>
 
 <body>
