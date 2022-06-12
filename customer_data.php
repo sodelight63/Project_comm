@@ -9,8 +9,8 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>หน้าแรก</title>
-    <?php require_once 'dashboard/head.php'; ?>
+    <title>หน้าข้อมูลลูกค้า</title>
+    <?php require_once 'navbar/head.php'?>
     <!-- data table -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -65,7 +65,7 @@ session_start();
                         </h3>
                     </div>
                     <div class="card-body">
-                        <table id="example" class="table table-hover">
+                        <table id="example" class="table table-borderless table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>

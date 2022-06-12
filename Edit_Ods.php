@@ -20,7 +20,7 @@ include('config/conn.php');
                 <div class="card">
                     <div class="card-body">
                         <h3>เพิ่มข้อมูลลูกค้า
-                            <a href="index_orders.php" class="btn btn-danger float-end">ย้อนกลับ</a>
+                            <a href="orders_data.php.php" class="btn btn-danger float-end">ย้อนกลับ</a>
                         </h3>
                     </div>
                     <div class="card-body">
