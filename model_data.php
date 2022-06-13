@@ -8,9 +8,9 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>หน้าแรกการสั่งซื้อ</title>
-    <?php require_once 'navbar/head.php'?>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>index_model</title>
+    <?php require_once 'navbar/head.php' ?>
 </head>
 
 <body>
@@ -25,43 +25,36 @@ session_start();
                 ?>
                 <div class="card">
                     <div class="card-header">
-                        <h3>
-                            ข้อมูลการสั่งซื้ออะไหล่
-                            <a href="Add_Ods.php" class="btn btn-primary float-end">เพิ่มข้อมูล</a>
+                        <h3>ตารางรุ่นฝาสูบ
+                            <a href="Add_model.php" class="btn btn-primary float-end">เพิ่มข้อมูล</a>
                         </h3>
                     </div>
                     <div class="card-body">
-                    <?php include 'datatable/DataTable.php';?>
+                        <?php include 'datatable/DataTable.php';?>
                         <table id="example" class="table table-borderless table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>ชื่ออะไหล่</th>
-                                    <th>จำนวน</th>
-                                    <th>ราคาต้นทุน</th>
-                                    <th>วันที่สั่งซื้อ</th>
+                                    <th>ชื่อรุ่นฝาสูบ</th>
                                     <th>แก้ไข</th>
                                     <th>ลบ</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $i = 1;
+                                $i=1;
                                 require 'config/conn.php';
-                                $sql = "SELECT * FROM orders";
+                                $sql = "SELECT * FROM model";
                                 $stmt = $conn->query($sql);
                                 while ($row = $stmt->fetch()) {
                                 ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td><?= $row['order_name']; ?></td>
-                                        <td><?= $row['order_quanlity']; ?></td>
-                                        <td><?= $row['order_cost']; ?></td>
-                                        <td><?= $row['order_date']; ?></td>
-                                        <td><a href="Edit_Ods.php?order_id=<?= $row['order_id'] ?>" class="btn btn-primary">แก้ไข</a></td>
+                                        <td><?= $row['model_name']; ?></td>
+                                        <td><a href="Edit_model.php?model_id=<?= $row['model_id'] ?>" class="btn btn-primary">แก้ไข</a></td>
                                         <td>
                                             <form action="crud.php" method="POST">
-                                                <button type="submit" name="delete_odr" value="<?= $row['order_id'] ?>" class="btn btn-danger">ลบ</button>
+                                                <button type="submit" name="delete_model" value="<?= $row['model_id'] ?>" class="btn btn-danger">ลบ</button>
                                             </form>
                                         </td>
                                     </tr>
