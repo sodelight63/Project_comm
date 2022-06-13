@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle"id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               จัดการข้อมูลพื้นฐาน
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -18,15 +18,11 @@
               <li><a class="dropdown-item" href="#">ข้อมูลอะไหล่</a></li>
             </ul>
           </li>
-          <li>
-            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              สั่งซื้ออะไหล่
-            </a>
+          <li class="nav-item">
+            <a class="nav-link" href="orders_data.php">สั่งซื้ออะไหล่</a>
           </li>
-          <li>
-            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              รับเข้าอะไหล่
-            </a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">รับเข้าอะไหล่</a>
           </li>
         </ul>
         <form class="d-flex">
