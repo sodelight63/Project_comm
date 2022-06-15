@@ -48,7 +48,6 @@ session_start();
                                 <button type="submit" name="save_cus" class="btn btn-primary">เพิ่มข้อมูล</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
