@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>หน้าการสั่งซื้ออะไหล่</title>
-    <?php require_once 'navbar/head.php'?>
+    <?php include 'navbar/head.php'?>
 </head>
 
 <body>
