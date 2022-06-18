@@ -3,18 +3,24 @@ session_start();
 include('config/conn.php');
 // ข้อมูลลูกค้า
 if (isset($_POST['save_cus'])) {
+    $title_ct = $_POST['title_ct'];
     $name_ct = $_POST['name_ct'];
     $surname_ct = $_POST['surname_ct'];
+    $username_ct = $_POST['username_ct'];
+    $password_ct = $_POST['password_ct'];
     $phone_ct = $_POST['phone_ct'];
     $email_ct = $_POST['email_ct'];
     $adress_ct = $_POST['adress_ct'];
 
-    $query = "INSERT INTO customer(name_ct,surname_ct,phone_ct,email_ct,adress_ct) VALUES(:name_ct,:surname_ct,:phone_ct,:email_ct,:adress_ct)";
+    $query = "INSERT INTO customer(title_ct,name_ct,surname_ct,username_ct,password_ct,phone_ct,email_ct,adress_ct) VALUES(:title_ct,:name_ct,:surname_ct,:username_ct,:password_ct,:phone_ct,:email_ct,:adress_ct)";
     $query_run = $conn->prepare($query);
 
     $data = [
+        ':title_ct' => $title_ct,
         ':name_ct' => $name_ct,
         ':surname_ct' => $surname_ct,
+        ':username_ct' => $username_ct,
+        ':password_ct' => $password_ct,
         ':phone_ct' => $phone_ct,
         ':email_ct' => $email_ct,
         ':adress_ct' => $adress_ct
@@ -34,19 +40,25 @@ if (isset($_POST['save_cus'])) {
 
 if (isset($_POST['edit_cus'])) {
     $customer_id = $_POST['customer_id'];
+    $title_ct = $_POST['title_ct'];
     $name_ct = $_POST['name_ct'];
     $surname_ct = $_POST['surname_ct'];
+    $username_ct = $_POST['username_ct'];
+    $password_ct = $_POST['password_ct'];
     $phone_ct = $_POST['phone_ct'];
     $email_ct = $_POST['email_ct'];
     $adress_ct = $_POST['adress_ct'];
 
     try {
-        $query = "UPDATE customer SET name_ct = :name_ct, surname_ct = :surname_ct, phone_ct = :phone_ct, email_ct = :email_ct, adress_ct = :adress_ct WHERE customer_id = :customer_id";
+        $query = "UPDATE customer SET title_ct = :title_ct, name_ct = :name_ct, surname_ct = :surname_ct, username_ct = :username_ct, password_ct = :password_ct, phone_ct = :phone_ct, email_ct = :email_ct, adress_ct = :adress_ct WHERE customer_id = :customer_id";
         $stmt = $conn->prepare($query);
 
         $data = [
+            ':title_ct' => $title_ct,
             ':name_ct' => $name_ct,
             ':surname_ct' => $surname_ct,
+            ':username_ct' => $username_ct,
+            ':password_ct' => $password_ct,
             ':phone_ct' => $phone_ct,
             ':email_ct' => $email_ct,
             ':adress_ct' => $adress_ct,

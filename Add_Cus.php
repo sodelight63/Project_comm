@@ -24,7 +24,7 @@ session_start();
             <div class="col mt-4">
                 <div class="card border-0">
                     <div class="card-body">
-                        <form class="row g-3">
+                        <form action="crud.php" method="POST" class="row g-3">
                             <div class="col-md-2">
                                 <label class="form-label">คำนำหน้า :</label>
                                 <input type="text" name="title_ct" class="form-control" />
@@ -59,7 +59,7 @@ session_start();
                             </div>
                             <div class="mb-3">
                                 <button type="submit" name="save_cus" class="btn btn-primary">เพิ่มข้อมูล</button>
-                                <a href="customer_data.php" class="btn btn-danger">ย้อนกลับ</a>
+                                <a href="customer_data.php" class="btn btn-danger">ยกเลิก</a>
                             </div>
                         </form>
                     </div>
