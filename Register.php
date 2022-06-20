@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,12 +16,27 @@
     <div class="container">
         <div class="row">
             <div class="col mt-4">
+                <?php if (isset($_SESSION['error_fill'])) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $_SESSION['error_fill']; ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (isset($_SESSION['exist_fill'])) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $_SESSION['exist_fill']; ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (isset($_SESSION['error_insert'])) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $_SESSION['error_insert']; ?>
+                    </div>
+                <?php endif; ?>
                 <div class="card border-0 shadow">
-                    <div class="card-header text-white bg-primary text-center">
+                    <div class="card-header text-dark bg-white text-center">
                         <h3>สมัครสมาชิก</h3>
                     </div>
                     <div class="card-body">
-                        <form class="row g-3">
+                        <form class="row g-3" action="Register_db.php" method="POST">
                             <div class="col-md-2">
                                 <label class="form-label">คำนำหน้า :</label>
                                 <input type="text" name="title_ct" class="form-control" />
@@ -52,7 +70,7 @@
                                 <input type="text" name="adress_ct" class="form-control" />
                             </div>
                             <div class="mb-3 text-center">
-                                <button type="submit" name="save_cus" class="btn btn-primary">สมัครสมาชิก</button>
+                                <button type="submit" name="Regis" class="btn btn-primary">สมัครสมาชิก</button>
                             </div>
                         </form>
                     </div>
@@ -64,3 +82,11 @@
 </body>
 
 </html>
+
+<?php
+if (isset($_SESSION['error_fill']) || isset($_SESSION['exist_fill']) || isset($_SESSION['error_insert'])) {
+    unset($_SESSION['error_fill']); 
+    unset($_SESSION['exist_fill']);
+    unset($_SESSION['error_insert']);
+}
+?>
