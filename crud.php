@@ -12,6 +12,7 @@ if (isset($_POST['save_cus'])) {
     $email_ct = $_POST['email_ct'];
     $adress_ct = $_POST['adress_ct'];
 
+    $password_ct = password_hash($password_ct, PASSWORD_DEFAULT);
     $query = "INSERT INTO customer(title_ct,name_ct,surname_ct,username_ct,password_ct,phone_ct,email_ct,adress_ct) VALUES(:title_ct,:name_ct,:surname_ct,:username_ct,:password_ct,:phone_ct,:email_ct,:adress_ct)";
     $query_run = $conn->prepare($query);
 
@@ -50,6 +51,7 @@ if (isset($_POST['edit_cus'])) {
     $adress_ct = $_POST['adress_ct'];
 
     try {
+        $password_ct = password_hash($password_ct, PASSWORD_DEFAULT);
         $query = "UPDATE customer SET title_ct = :title_ct, name_ct = :name_ct, surname_ct = :surname_ct, username_ct = :username_ct, password_ct = :password_ct, phone_ct = :phone_ct, email_ct = :email_ct, adress_ct = :adress_ct WHERE customer_id = :customer_id";
         $stmt = $conn->prepare($query);
 
