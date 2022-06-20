@@ -23,6 +23,9 @@
         <li class="nav-item">
           <a class="nav-link" href="#">รับเข้าอะไหล่</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Logout.php">Logout</a>
+        </li>
       </ul>
     </div>
   </div>
