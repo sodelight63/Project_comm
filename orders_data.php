@@ -24,16 +24,16 @@ session_start();
                 endif;
                 ?>
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-body">
                         <h3>
                             ข้อมูลการสั่งซื้ออะไหล่
-                            <a href="Add_Ods.php" class="btn btn-primary float-end">เพิ่มข้อมูล</a>
+                            <a href="Add_Ods.php" class="btn btn-primary">+เพิ่มข้อมูล</a>
                         </h3>
                     </div>
                     <div class="card-body">
                     <?php include 'datatable/DataTable.php';?>
                         <table id="example" class="table table-borderless table-hover">
-                            <thead>
+                            <thead class="table-primary">
                                 <tr>
                                     <th>#</th>
                                     <th>ชื่ออะไหล่</th>
@@ -58,10 +58,10 @@ session_start();
                                         <td><?= $row['order_quanlity']; ?></td>
                                         <td><?= $row['order_cost']; ?></td>
                                         <td><?= $row['order_date']; ?></td>
-                                        <td><a href="Edit_Ods.php?order_id=<?= $row['order_id'] ?>" class="btn btn-primary">แก้ไข</a></td>
+                                        <td><a href="Edit_Ods.php?order_id=<?= $row['order_id'] ?>" class="btn btn-warning">แก้ไข</a></td>
                                         <td>
                                             <form action="crud.php" method="POST">
-                                                <button type="submit" name="delete_odr" value="<?= $row['order_id'] ?>" class="btn btn-danger">ลบ</button>
+                                                <button type="submit" name="delete_odr" value="<?= $row['order_id'] ?>" onclick="return confirm('คุณต้องการลบหรือไม่');" class="btn btn-danger">ลบ</button>
                                             </form>
                                         </td>
                                     </tr>

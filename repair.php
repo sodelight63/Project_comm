@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>ข้อมูลลูกค้า</title>
-    <?php include 'navbar/head.php' ?>
+    <?php include 'navbar/nav_emp.php' ?>
 </head>
 
 <body>
@@ -25,8 +25,8 @@ session_start();
                 ?>
                 <div class="card">
                     <div class="card-body">
-                        <h3>ข้อมูลลูกค้า
-                            <a href="Add_Cus.php" class="btn btn-primary">+เพิ่มข้อมูล</a>
+                        <h3>รายการรับซ่อมฝาสูบ
+                            <a href="Add_repair.php" class="btn btn-primary">+เพิ่มรายการซ่อม</a>
                         </h3>
                     </div>
                     <div class="card-body">
@@ -35,32 +35,36 @@ session_start();
                             <thead class="table-primary">
                                 <tr>
                                     <th>#</th>
-                                    <th>ชื่อ-นามสกุล</th>
-                                    <th>เบอร์โทร</th>
-                                    <th>อีเมล</th>
-                                    <th>ที่อยู่</th>
+                                    <th>วันที่ซ่อม</th>
+                                    <th>ชื่อผู้ใช้บริการ</th>
+                                    <th>รายละเอียดการซ่อม</th>
+                                    <th>ค่าใช้จ่ายในการซ่อม</th>
+                                    <th>ค่าซ่อม</th>
+                                    <th>สถานะการซ่อม</th>
                                     <th>แก้ไข</th>
-                                    <th>ลบ</th>
+                                    <th>ยกเลิก</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 $i = 1;
                                 require 'config/conn.php';
-                                $sql = "SELECT * FROM customer";
+                                $sql = "SELECT * FROM repair";
                                 $stmt = $conn->query($sql);
                                 while ($row = $stmt->fetch()) {
                                 ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td><?= $row['title_ct'].$row['name_ct'].' '.$row['surname_ct']; ?></td>
-                                        <td><?= $row['phone_ct']; ?></td>
-                                        <td><?= $row['email_ct']; ?></td>
-                                        <td><?= $row['adress_ct']; ?></td>
-                                        <td><a href="Edit_Cus.php?customer_id=<?= $row['customer_id'] ?>" class="btn btn-warning">แก้ไข</a></td>
+                                        <td><?= $row['repair_date']; ?></td>
+                                        <td><?= $row['repair_name']; ?></td>
+                                        <td><?= $row['repair_details']; ?></td>
+                                        <td><?= $row['repair_cal']; ?></td>
+                                        <td><?= $row['repair_price']; ?></td>
+                                        <td><?= $row['repair_status']; ?></td>
+                                        <td><a href="Edit_repair.php?repair_id=<?= $row['repair_id'] ?>" class="btn btn-warning">แก้ไข</a></td>
                                         <td>
-                                            <form action="crud.php" method="POST">
-                                                <button type="submit" name="delete_cus" value="<?= $row['customer_id'] ?>" onclick="return confirm('คุณต้องการลบหรือไม่');" class="btn btn-danger">ลบ</button>
+                                            <form action="repair_crud.php" method="POST">
+                                                <button type="submit" name="delete_repair" value="<?= $row['repair_id'] ?>" class="btn btn-danger">ยกเลิก</button>
                                             </form>
                                         </td>
                                     </tr>

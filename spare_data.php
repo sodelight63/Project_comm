@@ -8,9 +8,9 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <title>ข้อมูลประเภทอะไหล่</title>
-    <?php include 'navbar/head.php' ?>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>ข้อมูลอะไหล่</title>
+    <?php include 'navbar/head.php'?>
 </head>
 
 <body>
@@ -25,36 +25,41 @@ session_start();
                 ?>
                 <div class="card">
                     <div class="card-body">
-                        <h3>ตารางรุ่นฝาสูบ
-                            <a href="Add_model.php" class="btn btn-primary">+เพิ่มข้อมูล</a>
+                        <h3>
+                            ข้อมูลอะไหล่ในสต็อก
+                            <a href="Add_spare.php" class="btn btn-primary">+เพิ่มข้อมูล</a>
                         </h3>
                     </div>
                     <div class="card-body">
-                        <?php include 'datatable/DataTable.php';?>
+                    <?php include 'datatable/DataTable.php';?>
                         <table id="example" class="table table-borderless table-hover">
                             <thead class="table-primary">
                                 <tr>
                                     <th>#</th>
-                                    <th>ชื่อรุ่นฝาสูบ</th>
+                                    <th>ชื่ออะไหล่</th>
+                                    <th>จำนวน</th>
+                                    <th>ราคา</th>
                                     <th>แก้ไข</th>
                                     <th>ลบ</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $i=1;
+                                $i = 1;
                                 require 'config/conn.php';
-                                $sql = "SELECT * FROM model";
+                                $sql = "SELECT * FROM spare";
                                 $stmt = $conn->query($sql);
                                 while ($row = $stmt->fetch()) {
                                 ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td><?= $row['model_name']; ?></td>
-                                        <td><a href="Edit_model.php?model_id=<?= $row['model_id'] ?>" class="btn btn-warning">แก้ไข</a></td>
+                                        <td><?= $row['spare_name']; ?></td>
+                                        <td><?= $row['spare_quanlity']; ?></td>
+                                        <td><?= $row['spare_cost']; ?></td>
+                                        <td><a href="Edit_spare.php?spare_id=<?= $row['spare_id'] ?>" class="btn btn-warning">แก้ไข</a></td>
                                         <td>
                                             <form action="crud.php" method="POST">
-                                                <button type="submit" name="delete_model" value="<?= $row['model_id'] ?>" onclick="return confirm('คุณต้องการลบหรือไม่');" class="btn btn-danger">ลบ</button>
+                                                <button type="submit" name="delete_spare" value="<?= $row['spare_id'] ?>" onclick="return confirm('คุณต้องการลบหรือไม่');" class="btn btn-danger">ลบ</button>
                                             </form>
                                         </td>
                                     </tr>

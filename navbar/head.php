@@ -14,7 +14,7 @@
             <li><a class="dropdown-item" href="employee_data.php">ข้อมูลพนักงาน</a></li>
             <li><a class="dropdown-item" href="customer_data.php">ข้อมูลลูกค้า</a></li>
             <li><a class="dropdown-item" href="model_data.php">ข้อมูลประเภทอะไหล่</a></li>
-            <li><a class="dropdown-item" href="#">ข้อมูลอะไหล่</a></li>
+            <li><a class="dropdown-item" href="spare_data.php">ข้อมูลอะไหล่</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -24,7 +24,10 @@
           <a class="nav-link" href="#">รับเข้าอะไหล่</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Logout.php">Logout</a>
+          <a class="nav-link" href="profile_Am.php">โปรไฟล์</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Logout_Am.php">Logout</a>
         </li>
       </ul>
     </div>
